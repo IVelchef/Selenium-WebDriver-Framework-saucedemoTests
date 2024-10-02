@@ -24,8 +24,6 @@ public class LoginTests extends SauceDemoBaseWebTest   {
         } catch (Exception e) {
 
             System.out.println("Login failed for user: " + user.getValue());
-
-            System.out.println("Error: " + e.getMessage());
         }
     }
 }
