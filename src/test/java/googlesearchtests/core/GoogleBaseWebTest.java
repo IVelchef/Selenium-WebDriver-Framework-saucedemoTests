@@ -17,13 +17,11 @@ public class GoogleBaseWebTest extends BaseWebTest {
 
     @BeforeEach
     public void beforeTests() {
-        // perform some code before each test starts
 
         searchPage = new SearchPage();
         resultsPage = new ResultsPage();
         cookieConsentPage = new CookieConsentPage();
 
-        // Navigate to base page
         driver().get(PropertiesManager.getConfigProperties().getProperty("googleBaseUrl"));
 
         acceptCookieConsent();

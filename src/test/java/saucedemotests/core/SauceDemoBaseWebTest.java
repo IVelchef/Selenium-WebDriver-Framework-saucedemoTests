@@ -39,13 +39,10 @@ public class SauceDemoBaseWebTest extends BaseWebTest {
     // close driver
     @AfterEach
     public void afterTest() {
-        driver().close();
-        // perform some code after each test has finished
     }
 
     @AfterAll
     public static void afterAll() {
-        // perform some code after all tests have finished
 
         driver().close();
     }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import saucedemotests.core.SauceDemoBaseWebTest;
-import saucedemotests.enums.TestData;
 
 public class ProductsTests extends SauceDemoBaseWebTest {
     public final String BACKPACK_TITLE = "Sauce Labs Backpack";
@@ -12,14 +11,12 @@ public class ProductsTests extends SauceDemoBaseWebTest {
 
     @BeforeEach
     public void beforeTest(){
-        // Authenticate with Standard user
 
         authenticateWithUser( "standard_user" , "secret_sauce");
     }
 
     @Test
     public void productAddedToShoppingCart_when_addToCart(){
-
 
 
         inventoryPage.addProductsByTitle( BACKPACK_TITLE, SHIRT_TITLE);
@@ -32,13 +29,8 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         Assertions.assertEquals(BACKPACK_TITLE, items.get(0).getText(), "Item title not as expected");
         Assertions.assertEquals(SHIRT_TITLE, items.get(1).getText(), "Item title not as expected");
 
-        // Add products to shopping cart
+        inventoryPage.logout();
 
-       // addProductsByTitle();
-
-        // Go to shopping cart
-
-        // Assert Items and Totals
     }
 
     @Test
@@ -69,21 +61,8 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         Assertions.assertEquals(SHIRT_TITLE, items.get(1).getText(), "Item title not as expected");
         Assertions.assertEquals(expectedPrice, actualTotal, "Items total price not as expected");
 
-        // Add products to shopping cart
+        inventoryPage.logout();
 
-        // Go to shopping cart
-
-        // Go to checkout
-
-        // Fill form
-
-        // Continue
-
-        // Assert Cart Items number
-
-        // Calculate expected total cost
-
-        // Assert Cart Items Titles and total cost
     }
 
     @Test
@@ -112,6 +91,6 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         var cartItemsAfterOrder = shoppingCartPage.getShoppingCartItems();
         Assertions.assertEquals(0, cartItemsAfterOrder.size(), "Shopping cart is not empty after order completion");
 
-
+        inventoryPage.logout();
     }
 }

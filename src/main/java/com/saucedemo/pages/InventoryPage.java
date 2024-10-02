@@ -12,6 +12,9 @@ public class InventoryPage extends BaseSauceDemoPage {
     // Locators
     private final By shoppingCartLink = By.className("shopping_cart_link");
     private final By pageTitle = By.xpath("//span[@class='title' and text()='Products']");
+    private final By burgerMenu = By.xpath("//div[@class='bm-burger-button']");
+    private final By logoutButton = By.xpath("//a[@data-test='logout-sidebar-link']");
+
 
     // Actions
     public void addProductsByTitle(String... titles) {
@@ -35,5 +38,12 @@ public class InventoryPage extends BaseSauceDemoPage {
     public void waitForPageTitle() {
         var title = driver().findElement(pageTitle);
         driverWait().until(ExpectedConditions.visibilityOf(title));
+    }
+
+    public void logout() {
+        driver().findElement(burgerMenu).click();
+        var logoutBtn = driver().findElement(logoutButton);
+        driverWait().until(ExpectedConditions.elementToBeClickable(logoutBtn));
+        logoutBtn.click();
     }
 }
