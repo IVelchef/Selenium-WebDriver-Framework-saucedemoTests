@@ -14,7 +14,8 @@ public class CheckoutOverviewPage extends BaseSauceDemoPage {
     private final By summaryTotalLabel = By.className("summary_total_label");
     private final By cartButton = By.xpath("//*[contains(@class,'cart_button')]");
 
-    public List<WebElement> getShoppingCartItems() { return driver().findElements(inventoryItems); }
+    public List<WebElement> getShoppingCartItems () {
+        return driver().findElements(inventoryItems); }
     public String getTotalLabelText() {
         return driver().findElement(summaryTotalLabel).getText();
     }

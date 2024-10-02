@@ -33,12 +33,13 @@ public class SauceDemoBaseWebTest extends BaseWebTest {
 
     @BeforeAll
     public static void beforeAll() {
-        // perform some code before all tests start
+
     }
 
     // close driver
     @AfterEach
     public void afterTest() {
+
     }
 
     @AfterAll

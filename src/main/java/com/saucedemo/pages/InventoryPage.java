@@ -14,6 +14,9 @@ public class InventoryPage extends BaseSauceDemoPage {
     private final By pageTitle = By.xpath("//span[@class='title' and text()='Products']");
     private final By burgerMenu = By.xpath("//div[@class='bm-burger-button']");
     private final By logoutButton = By.xpath("//a[@data-test='logout-sidebar-link']");
+    private final By burgerButton = By.id("react-burger-menu-btn");
+    private final By resetSidebarLink = By.id("reset_sidebar_link");
+
 
 
     // Actions
@@ -45,5 +48,11 @@ public class InventoryPage extends BaseSauceDemoPage {
         var logoutBtn = driver().findElement(logoutButton);
         driverWait().until(ExpectedConditions.elementToBeClickable(logoutBtn));
         logoutBtn.click();
+    }
+
+    public void resetShoppingCart() {
+        driver().findElement(burgerButton).click();
+        driver().findElement(resetSidebarLink).click();
+        driver().navigate().refresh();
     }
 }

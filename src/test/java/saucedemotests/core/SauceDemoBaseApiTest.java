@@ -24,7 +24,8 @@ public class SauceDemoBaseApiTest extends BaseApiTest {
     // close driver
     @AfterEach
     public void afterTest() {
-        // perform some code after each test has finished
+
+
     }
 
     @AfterAll

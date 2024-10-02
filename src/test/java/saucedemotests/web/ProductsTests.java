@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import saucedemotests.core.SauceDemoBaseWebTest;
 
+
 public class ProductsTests extends SauceDemoBaseWebTest {
     public final String BACKPACK_TITLE = "Sauce Labs Backpack";
     public final String SHIRT_TITLE = "Sauce Labs Bolt T-Shirt";
@@ -13,6 +14,7 @@ public class ProductsTests extends SauceDemoBaseWebTest {
     public void beforeTest(){
 
         authenticateWithUser( "standard_user" , "secret_sauce");
+        inventoryPage.resetShoppingCart();
     }
 
     @Test
@@ -30,6 +32,7 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         Assertions.assertEquals(SHIRT_TITLE, items.get(1).getText(), "Item title not as expected");
 
         inventoryPage.logout();
+
 
     }
 
@@ -62,6 +65,7 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         Assertions.assertEquals(expectedPrice, actualTotal, "Items total price not as expected");
 
         inventoryPage.logout();
+
 
     }
 
