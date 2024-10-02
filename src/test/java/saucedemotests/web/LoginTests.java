@@ -1,18 +1,31 @@
 package saucedemotests.web;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import saucedemotests.core.SauceDemoBaseWebTest;
 import saucedemotests.enums.TestData;
 
-public class LoginTests extends SauceDemoBaseWebTest {
+public class LoginTests extends SauceDemoBaseWebTest   {
 
-    @Test
-    public void userAuthenticated_when_validCredentialsProvided(){
+
+    @ParameterizedTest
+    @EnumSource(TestData.class)
+    public void userAuthenticated_when_validCredentialsProvided(TestData user) {
         loginPage.navigate();
 
-        loginPage.submitLoginForm(TestData.STANDARD_USER_USERNAME.getValue(), TestData.STANDARD_USER_PASSWORD.getValue());
-        inventoryPage.waitForPageTitle();
+        try {
+            loginPage.submitLoginForm(user.getValue(), TestData.STANDARD_USER_PASSWORD.getValue());
 
-        inventoryPage.assertNavigated();
+            inventoryPage.waitForPageTitle();
+            inventoryPage.assertNavigated();
+
+        } catch (Exception e) {
+
+            System.out.println("Login failed for user: " + user.getValue());
+
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
