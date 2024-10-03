@@ -1,5 +1,4 @@
 package saucedemotests.web;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,14 +46,14 @@ public class ProductsTests extends SauceDemoBaseWebTest {
 
         shoppingCartPage.clickCheckout();
 
-        checkoutYourInformationPage.fillShippingDetails("Fname", "lname", "zip");
+        checkoutYourInformationPage.fillShippingDetails("Vanko", "Vankof", "1000");
         checkoutYourInformationPage.clickContinue();
 
         var items = shoppingCartPage.getShoppingCartItems();
         Assertions.assertEquals(2, items.size(), "Items count not as expected");
 
         var totalText = checkoutOverviewPage.getTotalLabelText();
-        totalText = totalText.replace("Total: $", ""); // Премахваме 'Total: $'
+        totalText = totalText.replace("Total: $", "");
         double actualTotal = Double.parseDouble(totalText);
 
         double expectedPrice = 29.99 + 15.99 + 3.68;
@@ -80,7 +79,7 @@ public class ProductsTests extends SauceDemoBaseWebTest {
 
         shoppingCartPage.clickCheckout();
 
-        checkoutYourInformationPage.fillShippingDetails("Fname", "lname", "zip");
+        checkoutYourInformationPage.fillShippingDetails("Vanko", "Vankof", "1000");
         checkoutYourInformationPage.clickContinue();
 
         var itemsInCart = shoppingCartPage.getShoppingCartItems();
@@ -96,5 +95,7 @@ public class ProductsTests extends SauceDemoBaseWebTest {
         Assertions.assertEquals(0, cartItemsAfterOrder.size(), "Shopping cart is not empty after order completion");
 
         inventoryPage.logout();
+
+
     }
 }

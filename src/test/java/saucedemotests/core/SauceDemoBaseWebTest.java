@@ -18,7 +18,6 @@ public class SauceDemoBaseWebTest extends BaseWebTest {
 
     @BeforeEach
     public void beforeTests() {
-        // perform some code before each test starts
 
         inventoryPage = new InventoryPage();
         loginPage = new LoginPage();
@@ -27,7 +26,6 @@ public class SauceDemoBaseWebTest extends BaseWebTest {
         checkoutYourInformationPage = new CheckoutYourInformationPage();
         checkoutCompletePage = new CheckoutCompletePage();
 
-        // Navigate to base page
         driver().get(PropertiesManager.getConfigProperties().getProperty("sauceDemoBaseUrl"));
     }
 
@@ -36,7 +34,7 @@ public class SauceDemoBaseWebTest extends BaseWebTest {
 
     }
 
-    // close driver
+
     @AfterEach
     public void afterTest() {
 
